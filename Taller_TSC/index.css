@@ -231,6 +231,122 @@ nav ul li.dropdown {
     background-color: #ff2d55; /* Cambia el color cuando se pasa el ratón por encima */
   }
 
+  /*Cambios Castellanos */
+
+/* Modo Oscuro (Predeterminado) */
+body {
+    background-color: black !important;
+    color: white !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Elementos que también deben cambiar */
+.navbar, .submenu, .card, .section {
+    background-color: black !important;
+    color: white !important;
+}
+
+/* Botones y enlaces en modo oscuro */
+.btn {
+    background-color: #ff2d55 !important;
+    border-color: #ff2d55 !important;
+    color: white !important;
+}
+
+.btn:hover {
+    background-color: darkred !important;
+}
+
+/* "TOTES BGA" en rojo en modo oscuro */
+h1, .highlight {
+    color: #ff2d55 !important;
+}
+
+/* Modo Claro */
+body.light-mode {
+    background-color: white !important;
+    color: black !important;
+}
+
+/* Asegurar que navbar, secciones y cards también cambian en modo claro */
+.light-mode .navbar,
+.light-mode .submenu,
+.light-mode .card,
+.light-mode .section {
+    background-color: white !important;
+    color: black !important;
+}
+
+/* Cambiar botones en modo claro */
+.light-mode .btn {
+    background-color: blue !important;
+    border-color: blue !important;
+    color: white !important;
+}
+
+.light-mode .btn:hover {
+    background-color: darkblue !important;
+}
+
+/* Cambiar "TOTES BGA" de rojo a azul en modo claro */
+.light-mode h1,
+.light-mode .highlight {
+    color: blue !important;
+}
+
+/* Evitar que las imágenes se inviertan */
+img {
+    filter: none !important;
+}
+
+.toggle-container {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 3000;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px; width: 26px;
+    left: 4px; bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #ff2d55;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
 
 
 

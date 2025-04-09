@@ -27,6 +27,7 @@ header {
     z-index: 1000; /* Asegura que el menú tiene prioridad */
 }
 
+
 .submenu {
     position: absolute;
     top: 100%;
@@ -79,8 +80,12 @@ header {
 .submenu ul li a:hover {
   color: #ff2d55; /* Cambia solo el color del texto a rojo */
 }
+
+
+
+
     </style>
-  </head>
+    </head>
   <body>
   <header>
         <div class="top-nav">
@@ -118,7 +123,12 @@ header {
             </nav>
         </div>
     </header>
-    
+    <div class="toggle-container">
+    <label class="switch">
+        <input type="checkbox" id="modo-toggle">
+        <span class="slider"></span>
+    </label>
+      </div>
     <section class="hero">
       <div class="hero-text">
         <h1>
@@ -182,7 +192,7 @@ header {
         <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1wlvUVXo0VD46RBwd4_-1J-_rNX6AnvM_a1DiSakJjGLYXywHSS8zqgnWrD1zsdnpURAHjGPkv?gv=true" class="btn btn-alt" target="_blank">Agendar cita</a>
       </div>
     </section>
-
+    <button id="toggle-theme">Cambiar Modo</button>
     <footer>
       <div class="footer-logo">
         <img src="assets/Logo.png" alt="TOTES BGA" />
@@ -190,6 +200,36 @@ header {
       <p>© 2025 TotesBGA Colombia. Todos los derechos reservados</p>
     </footer>
   </body>
+  <script>
+    const toggleInput = document.getElementById("modo-toggle");
+    const body = document.body;
+
+    function aplicarTemaGuardado() {
+        const tema = localStorage.getItem("theme");
+        if (tema === "light") {
+            body.classList.add("light-mode");
+            toggleInput.checked = true;
+        } else {
+            body.classList.remove("light-mode");
+            toggleInput.checked = false;
+        }
+    }
+
+    function alternarModo() {
+        if (toggleInput.checked) {
+            body.classList.add("light-mode");
+            localStorage.setItem("theme", "light");
+        } else {
+            body.classList.remove("light-mode");
+            localStorage.setItem("theme", "dark");
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        aplicarTemaGuardado();
+        toggleInput.addEventListener("change", alternarModo);
+    });
+</script>
 </html>
 
 

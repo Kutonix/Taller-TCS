@@ -176,6 +176,12 @@ body {
 </head>
 <body>
     <header>
+        <div class="toggle-container">
+            <label class="switch">
+                <input type="checkbox" id="modo-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>        
         <div class="top-nav">
             <div class="logo">
                 <img src="assets/Logo.png" alt="TOTES BGA" />
@@ -279,4 +285,34 @@ body {
         <p>© 2025 TotesBGA Colombia. Todos los derechos reservados</p>
       </footer>
 </body>
+<script>
+    const toggleInput = document.getElementById("modo-toggle");
+    const body = document.body;
+
+    function aplicarTemaGuardado() {
+        const tema = localStorage.getItem("theme");
+        if (tema === "light") {
+            body.classList.add("light-mode");
+            toggleInput.checked = true;
+        } else {
+            body.classList.remove("light-mode");
+            toggleInput.checked = false;
+        }
+    }
+
+    function alternarModo() {
+        if (toggleInput.checked) {
+            body.classList.add("light-mode");
+            localStorage.setItem("theme", "light");
+        } else {
+            body.classList.remove("light-mode");
+            localStorage.setItem("theme", "dark");
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        aplicarTemaGuardado();
+        toggleInput.addEventListener("change", alternarModo);
+    });
+</script>
 </html>
